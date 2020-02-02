@@ -76,7 +76,7 @@ section{
   
   }
   .footer_center{
-	padding-top:100px;
+	padding-top:65px;
 	  width:500px;
 	  float:left;
 	text-align:center;
@@ -91,11 +91,18 @@ section{
 
   @media screen and (max-width: 968px) {
 	.footer_center p{
-		width: 200px;
+		width: 350px;
 		margin: auto;}
 	
 	}
-	.footer_center img{
-		width: 200px;
-		height: 400px;
-		margin: auto;}
+	@media screen and (min-width: 968px) {
+		.footer_center p{
+			width: 500px;
+			font-size: large;
+			margin: auto;}
+		
+		}
+		.footer_center img{
+			width: 200px;
+			height: 400px;
+			margin: auto;}

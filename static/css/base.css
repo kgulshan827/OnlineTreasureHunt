@@ -106,16 +106,16 @@ td{
     text-align:center;font-family:impact;font-size:45px;font-weight:bold; text-shadow:2px 2px #457FCA;
 }
 
-.footer {
+/* .footer {
     text-align: center;
     font-size: 1.5em;
     margin-top: 20px;
-}
+} */
 
 .footer img {
     display: inline!important;
     margin-left: 0.5em;
-    max-height: 5em;
+    max-height: 8em;
     max-width: 80%;
 }
 #particles-js {
