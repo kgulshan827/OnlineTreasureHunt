@@ -63,8 +63,9 @@ section{
 	position:relative;
 	top:0;
 	left:0;
-	  background: #3A3A3A;
+	background: #3A3A3A;
 	float: left;
+	opacity: .90;
   }
   .footerft #cont{
 	position:relative;

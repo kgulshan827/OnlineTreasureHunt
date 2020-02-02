@@ -44,6 +44,40 @@
   
   <div id="overlay"> 
   <body class="bodypad">
+    <nav class="navbar navbar-dark">
+      <div class="container1">
+        <div class="navbar-header">
+          <button style="background-color:#f5f5f5" type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+            <span9 class="icon-bar"></span9>
+            <span9 class="icon-bar"></span9>
+            <span9 class="icon-bar"></span9>
+          </button>
+          <a href="/" style="color:#f5f5f5" class="navbar-brand"><span92>🔍</span92><span91 style=" width:10px;height:10px;margin-left:10px;font-family: 'Iceland';font-size:25px;font-weight:20px;opacity: 0.8;">Online Treasure Hunt</span91>
+          </a>
+    <div class="navbar-brand" style="color:gray;font-family:'Capriola',sans-serif;" >Your Score :   <span style="font-weight:bold;color:rgb(8, 119, 8)">{{player.score}} points</span></div>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+          <ul class="nav navbar-nav navbar-right">
+    
+            <li><a style="font-family:'Capriola',sans-serif;" href="/rules">Rules</a></li>
+            <li><a style="font-family:'Capriola',sans-serif;" href="/lboard/">Leaderboard</a></li>
+            <li class="dropdown">
+              <button class="dropdown-toggle btn btn-default navbar-btn" data-toggle="dropdown" style="margin-left:10px;background-color:#f5f5f5" >
+    
+    
+    <b>{{ user.get_full_name|default:user.username }}</b>
+    
+              <span9 class="caret"></span9>
+              </button>
+              <ul class="dropdown-menu">
+            <li><a href="{% url 'auth:logout' %}?next={{ '/' }}"><b>Logout</b></a></li>
+              </ul>
+            </li>
+    
+          </ul>
+        </div>
+      </div>
+    </nav>
 
     <div class="container">
      
@@ -66,7 +100,7 @@
         <div id="cont">
           <div class="footer_center">
             <p style="color:white;">&copy; 2020. <strong>Developed by:</strong> Team AAVISHKAR, NIT Durgapur</p>
-            <img src="/static/img/AarohanLogo.png" alt="Aarohanlogo">
+           <a target="__blank" href="https://www.facebook.com/arhn.nitd/"><img src="/static/img/AarohanLogo.png" alt="Aarohanlogo"></a> 
           </div>
         </div>
     

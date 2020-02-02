@@ -13,7 +13,7 @@
                 	<th>#</th><th >Player Name</th><th>Player Score</th><th>Last level Crossed at</th>
                 </tr>
                 {% for player in players %}
-                <tr style="color: white;">
+                <tr style="background-color:#b1d3f8;color: rgba(0, 11, 46, 0.836);">
                 	<td>{{ player.rank }}</td><td>{{ player.name }}</td>    <td> {{player.score}} </td>    <td> {{player.timestamp}}</td>
                 </tr>
                 {% endfor %}

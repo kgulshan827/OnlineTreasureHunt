@@ -40,7 +40,8 @@ background:rgba(255,255,255,0.7) */
 .nav-justified {background-color: white}
 .bodypad{
 background: #1B809E; /* fallback for old browsers */
-background-image: url("../img/technology.jpg")!important;
+background-image: url("../img/HQ.jpg")!important;
+background-attachment: fixed;
 
 -webkit-background-size: cover;
 -moz-background-size: cover;
@@ -70,6 +71,7 @@ background-image: none;
 .padleft{padding-left:10px;}
 .bodypad{
   background-image: url("../img/technology.jpg")!important;
+  background-repeat: no-repeat;
   }
 }
 
