@@ -46,7 +46,7 @@ def save_profile(backend, user, response, *args, **kwargs):
         except:
             player = models.player(user=profile)
             player.timestamp=datetime.datetime.now()
-            player.name = response.get('name')['givenName'] + " " + response.get('name')['familyName']
+            player.name = response.get('name')
             player.save()
             
 
