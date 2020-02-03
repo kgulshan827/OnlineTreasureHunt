@@ -146,6 +146,7 @@ td{
   animation: swing ease-in-out 1s infinite alternate;
   transform-origin: center -20px;
   float:left;
+  margin:0 auto;
 }
 .swing:after{
   content: '';
@@ -156,6 +157,7 @@ td{
   border-bottom: none;
   border-right: none;
   transform: rotate(45deg);
+  margin:0 auto;
 }
 /* nail */
 .swing:before{
@@ -171,4 +173,9 @@ td{
 @keyframes swing {
   0% { transform: rotate(3deg); }
   100% { transform: rotate(-3deg); }
+}
+
+.container3{
+  margin: 0 auto;
+  border-radius: 2px bold white;
 }
