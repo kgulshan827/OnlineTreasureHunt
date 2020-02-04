@@ -13,59 +13,45 @@
       {%endif%}
       <div class="col-lg-12 padleft" >
         {%if level.audio.url != '/media/audios/default.mp3' %}
-
-              <div  style="font-size: 20px;text-align: center;color: white;">
-                <p>Audio Hint</p>
-                <audio controls="" src="{{level.audio.url}}">
-                </audio>
-              </div>
-              
-              </div>
-          
+          <div  style="font-size: 20px;text-align: center;color: white;">
+            <p>Audio Hint</p>
+            <audio controls="" src="{{level.audio.url}}">
+            </audio>
+          </div>
+        </div> 
         <hr>
-
         {%endif%}
-
         <br>
 
+    <div class="col-lg-12 rules border-shadow" style="padding:25px">
 
-        <div class="col-lg-12 rules border-shadow" style="padding:25px">
+        {% block msgblock %}
+        {% if messages %}
+        {% for message in messages %}
+        <div class="alert {% if message.tags %} alert-{% if message.tags == "error" %}danger{% else %}{{ message.tags }}{% endif %}"{% endif %} role="alert">{{ message }}</div>
+        {% endfor %}
+        {% endif %}
+        {% endblock %}
 
-            {% block msgblock %}
-            {% if messages %}
-            {% for message in messages %}
-            <div class="alert {% if message.tags %} alert-{% if message.tags == "error" %}danger{% else %}{{ message.tags }}{% endif %}"{% endif %} role="alert">{{ message }}</div>
-            {% endfor %}
-            {% endif %}
-            {% endblock %}
-
-            </br>
-            <div class="lead" style="padding:10px; font-family: 'Montserrat', sans-serif;  ">
-            {{ level.text }}
-            </div>
-            </br>
+        </br>
+        <div class="lead" style="padding:10px; font-family: 'Montserrat', sans-serif;">
+        {{ level.text }}
+        </div>
+        </br>
             
-
-            
-
-
         Enter your answer:
         <br>
         <form id="ans" method="post" action="/answer/">
-            {% csrf_token %}
-            <br> <input type="text" name="ans" class="form-control" value="" size="50" autofocus/>
-            <br />
-
-            <input type="submit" class="btn btn-primary btn-lg btn-block" value="Submit" />
-
+          {% csrf_token %}
+          <br> 
+          <input type="text" name="ans" class="form-control" value="" size="50" autofocus/>
+          <br/>
+          <input type="submit" class="btn btn-primary btn-lg btn-block" value="Submit" />
         </form>
       
         </div>
 
-   
-
-     
-      </div>
+</div>
 
 <button class="toggle btn btn-success" style="margin-left:10px; border-radius: 20px;">SHOW STATUS</button>
 <br>
@@ -82,7 +68,6 @@
       </div>
 </div>
 
-<!--  -->
 </div>
 
 {%endblock%}
