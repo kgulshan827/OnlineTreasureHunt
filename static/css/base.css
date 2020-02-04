@@ -56,6 +56,12 @@ background-size: cover;
   padding-top:0
 }
 .rules{border:5px solid #eee;border-radius: 5px;margin-bottom: 10px;background-color:rgba(255, 255, 255, 0.85)}
+.rules2 {
+  border: 5px solid #032d1c;
+  border-radius: 31px;
+  margin-bottom: 10px;
+  background-color: rgba(216, 248, 199, 0.85);
+}
 .nav li  a:hover {
 background-color: #ddd;
 box-shadow:0px 3px 7px rgba(0, 0, 0, 0.15) inset;
@@ -168,6 +174,7 @@ td{
   z-index: 5;
   border-radius: 50% 50%;
   background: #000;
+  
 }
 
 @keyframes swing {
@@ -175,7 +182,8 @@ td{
   100% { transform: rotate(-3deg); }
 }
 
-.container3{
+.container3{  margin: 0 auto;
+  border-radius: 2px bold white;
   margin: 0 auto;
   border-radius: 2px bold white;
 }
