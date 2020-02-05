@@ -64,14 +64,10 @@ def answer(request):
         level = models.level.objects.get(l_number=player.current_level)
     except ObjectDoesNotExist:
         if player.current_level > lastlevel:
-            print("-------------------2")
             return render(request, 'win.html', {'player': player})  
-        print("-------------------3")    
         return render(request, 'finish.html', {'player': player})
-    # print answer
-    # print level.answer
+
     if ans == level.answer:
-        #print level.answer
         player.current_level = player.current_level + 1
         player.score = player.score + 10
         player.timestamp = datetime.datetime.now(tz=timezone.utc)
