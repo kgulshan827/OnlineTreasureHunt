@@ -27,7 +27,7 @@ SECRET_KEY = config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG',cast=bool)
 
-ALLOWED_HOSTS = ['440601eb.ngrok.io','127.0.0.1','localhost','159.89.167.153','oth.arhn.co.in', 'oth.nitdgplug.org']
+ALLOWED_HOSTS = ['440601eb.ngrok.io','127.0.0.1','localhost','159.89.167.153', 'oth.arhn.co.in', 'oth.nitdgplug.org']
 
 
 # Application definition
