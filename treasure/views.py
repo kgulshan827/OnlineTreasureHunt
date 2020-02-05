@@ -8,8 +8,6 @@ from . import models
 from django.utils import timezone
 import datetime
 
-def landing(request):
-    return render(request, 'landing.html')
 
 def index(request):   
     m_level = models.total_level.objects.get(id=1)
