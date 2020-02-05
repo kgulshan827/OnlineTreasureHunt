@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import models
 from django.contrib import messages
@@ -114,3 +114,21 @@ def lboard(request):
 
 def rules(request):
     return render(request, 'index_page.html')
+
+def lboard_api(request):
+    p = models.player.objects.order_by('-score','timestamp')
+    cur_rank = 1
+
+    for pl in p:
+        pl.rank = cur_rank
+        cur_rank += 1
+
+    leaderboard = list()
+    for pl in p:
+        leaderboard.append({
+            'name': pl.name, 
+            'value': str(pl.score),
+            'email': pl.user.email
+        })
+
+    return JsonResponse(leaderboard, safe=False)
