@@ -29,6 +29,7 @@ class level(models.Model):
 class config(models.Model):
     totallevel = models.IntegerField(default=30)
     numlevel = models.IntegerField(default=30)
+    countdown = models.BooleanField(default=False)
 
     def __str__(self):
         return "App Level Configuration"

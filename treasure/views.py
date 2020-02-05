@@ -13,8 +13,12 @@ def index(request):
     config = models.config.objects.get(id=1)
     lastlevel = config.totallevel # the level upto which questions is currently released.
     numlevel = config.numlevel # the total no. of levels that would eventually be released.
+    countdown = config.countdown
 
     if request.user.is_authenticated:
+        if countdown and (not request.user.is_staff):
+            return render(request, 'timer.html')
+
         player = models.player.objects.get(user_id=request.user.pk)
         if player.current_level <= lastlevel:
             level = models.level.objects.get(l_number=player.current_level)
