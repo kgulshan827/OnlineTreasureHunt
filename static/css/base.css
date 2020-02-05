@@ -69,7 +69,7 @@ background-image: none;
 }
 .nav li  a{color:#1B809E;}
 
- @media screen and (max-width: 968px) {
+ @media screen and (max-width: 750px) {
 .container-fluid{
     padding-right: 10px;
 }
@@ -82,7 +82,7 @@ background-image: none;
 }
 
 
- @media screen and (max-width: 1200px){
+ @media screen and (max-width: 750px){
 .padleft{padding-left:10px!important;}
 
 
@@ -92,7 +92,7 @@ background-image: none;
     color:#457fca;
     font-size: 20px;
 }
-@media screen and (max-width: 968px) {
+@media screen and (max-width: 750px) {
 .navbar-default .navbar-nav > li {
     font-weight: bold;
     margin-left: 20px;

@@ -23,6 +23,7 @@ def index(request):
             if player.current_level == numlevel + 1:
                 return render(request, 'win.html', {'player': player})
             return render(request, 'finish.html', {'player': player})
+            # return render(request, 'timer.html', {'player': player})
     return render(request, 'index_page.html')
 
 
