@@ -26,8 +26,9 @@ class level(models.Model):
     def __str__(self):
         return self.text
 
-class total_level(models.Model):
-    totallevel = models.IntegerField(default=100)
+class config(models.Model):
+    totallevel = models.IntegerField(default=30)
+    numlevel = models.IntegerField(default=30)
 
     def __str__(self):
-        return str(self.totallevel)
+        return "App Level Configuration"

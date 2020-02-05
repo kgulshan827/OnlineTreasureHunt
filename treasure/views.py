@@ -9,21 +9,20 @@ from django.utils import timezone
 import datetime
 
 
-def index(request):   
-    m_level = models.total_level.objects.get(id=1)
-    lastlevel = m_level.totallevel
-  
-    user = request.user
-    if user.is_authenticated:
+def index(request):
+    config = models.config.objects.get(id=1)
+    lastlevel = config.totallevel # the level upto which questions is currently released.
+    numlevel = config.numlevel # the total no. of levels that would eventually be released.
+
+    if request.user.is_authenticated:
         player = models.player.objects.get(user_id=request.user.pk)
-        try:
+        if player.current_level <= lastlevel:
             level = models.level.objects.get(l_number=player.current_level)
             return render(request, 'level.html', {'player': player, 'level': level})
-        except ObjectDoesNotExist:
-            if player.current_level > lastlevel:
+        else:
+            if player.current_level == numlevel + 1:
                 return render(request, 'win.html', {'player': player})
             return render(request, 'finish.html', {'player': player})
-
     return render(request, 'index_page.html')
 
 
@@ -46,23 +45,23 @@ def save_profile(backend, user, response, *args, **kwargs):
             player.timestamp=datetime.datetime.now()
             player.name = response.get('name')
             player.save()
-            
+
 
 @login_required
 def answer(request):
-    
-    m_level = models.total_level.objects.get(id=1)
-    lastlevel = m_level.totallevel
+    config = models.config.objects.get(id=1)
+    lastlevel = config.totallevel
+    numlevel = config.numlevel
 
     ans = ""
     if request.method == 'POST':
         ans = request.POST.get('ans')
     player = models.player.objects.get(user_id=request.user.pk)
-    try:
+    if player.current_level <= lastlevel:
         level = models.level.objects.get(l_number=player.current_level)
-    except ObjectDoesNotExist:
-        if player.current_level > lastlevel:
-            return render(request, 'win.html', {'player': player})  
+    else:
+        if player.current_level == numlevel + 1:
+            return render(request, 'win.html', {'player': player})
         return render(request, 'finish.html', {'player': player})
 
     if ans == level.answer:
@@ -73,14 +72,14 @@ def answer(request):
         level.accuracy = round(level.numuser/(float(level.numuser + level.wrong)),2)
         level.save()
         player.save()
-
-        try:
+        if player.current_level <= lastlevel:
             level = models.level.objects.get(l_number=player.current_level)
             return render(request, 'level_transition.html')
-        except:
-            if player.current_level > lastlevel:
-                return render(request, 'win.html', {'player': player})    
+        else:
+            if player.current_level == numlevel + 1:
+                return render(request, 'win.html', {'player': player})
             return render(request, 'finish.html', {'player': player})
+
     elif ans=="":
         return render(request, 'level.html', {'player': player, 'level': level})
         messages.error(request, "Please enter answer!")
