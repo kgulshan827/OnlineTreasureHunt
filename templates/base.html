@@ -56,7 +56,9 @@
           </button>
           <a href="/" style="color:#f5f5f5" class="navbar-brand"><span92>🔍</span92><span91 style=" width:10px;height:10px;margin-left:10px;font-family: 'Iceland';font-size:25px;font-weight:20px;opacity: 0.8;">Online Treasure Hunt</span91>
           </a>
+          {%if user.is_authenticated%}
           <div class="navbar-brand" style="color:gray;font-family:'Capriola',sans-serif;" >Your Score :   <span style="font-weight:bold;color:rgb(8, 119, 8)">{{player.score}} points</span></div>
+          {%endif%}
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
           <ul class="nav navbar-nav navbar-right">
@@ -79,7 +81,6 @@
              
             </li>
             {%endif%}
-    
           </ul>
         </div>
       </div>
