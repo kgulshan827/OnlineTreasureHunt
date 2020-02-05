@@ -3,4 +3,4 @@ from .models import *
 # Register your models here.
 admin.site.register(player)
 admin.site.register(level)
-admin.site.register(total_level)
+admin.site.register(config)
