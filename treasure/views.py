@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import models
 from django.contrib import messages
@@ -8,8 +8,6 @@ from . import models
 from django.utils import timezone
 import datetime
 
-def landing(request):
-    return render(request, 'landing.html')
 
 def index(request):   
     m_level = models.total_level.objects.get(id=1)
@@ -64,14 +62,10 @@ def answer(request):
         level = models.level.objects.get(l_number=player.current_level)
     except ObjectDoesNotExist:
         if player.current_level > lastlevel:
-            print("-------------------2")
             return render(request, 'win.html', {'player': player})  
-        print("-------------------3")    
         return render(request, 'finish.html', {'player': player})
-    # print answer
-    # print level.answer
+
     if ans == level.answer:
-        #print level.answer
         player.current_level = player.current_level + 1
         player.score = player.score + 10
         player.timestamp = datetime.datetime.now(tz=timezone.utc)
@@ -83,8 +77,6 @@ def answer(request):
         try:
             level = models.level.objects.get(l_number=player.current_level)
             return render(request, 'level_transition.html')
-
-            return render(request, 'level.html', {'player': player, 'level': level})
         except:
             if player.current_level > lastlevel:
                 return render(request, 'win.html', {'player': player})    
@@ -114,3 +106,21 @@ def lboard(request):
 
 def rules(request):
     return render(request, 'index_page.html')
+
+def lboard_api(request):
+    p = models.player.objects.order_by('-score','timestamp')
+    cur_rank = 1
+
+    for pl in p:
+        pl.rank = cur_rank
+        cur_rank += 1
+
+    leaderboard = list()
+    for pl in p:
+        leaderboard.append({
+            'name': pl.name, 
+            'value': str(pl.score),
+            'email': pl.user.email
+        })
+
+    return JsonResponse(leaderboard, safe=False)
