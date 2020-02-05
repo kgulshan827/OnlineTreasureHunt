@@ -79,8 +79,6 @@ def answer(request):
         try:
             level = models.level.objects.get(l_number=player.current_level)
             return render(request, 'level_transition.html')
-
-            return render(request, 'level.html', {'player': player, 'level': level})
         except:
             if player.current_level > lastlevel:
                 return render(request, 'win.html', {'player': player})    
