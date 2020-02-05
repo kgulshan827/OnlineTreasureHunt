@@ -14,6 +14,7 @@ def index(request):
     lastlevel = config.totallevel # the level upto which questions is currently released.
     numlevel = config.numlevel # the total no. of levels that would eventually be released.
     countdown = config.countdown
+    print(countdown)
 
     if request.user.is_authenticated:
         if countdown and (not request.user.is_staff):
@@ -99,21 +100,30 @@ def answer(request):
 
 def lboard(request):
     p = models.player.objects.order_by('-score','timestamp')
+    if request.user.is_authenticated:
+     player = models.player.objects.get(user_id=request.user.pk)
     cur_rank = 1
 
     for pl in p:
         pl.rank = cur_rank
         cur_rank += 1
-
-    return render(request, 'lboard.html', {'players': p})
+    if request.user.is_authenticated:
+     return render(request, 'lboard.html', {'players': p,'player':player})
+    else:
+     return render(request, 'lboard.html', {'players': p})
 
 def rules(request):
-    return render(request, 'index_page.html')
+    if request.user.is_authenticated:
+        player = models.player.objects.get(user_id=request.user.pk)
+        return render(request, 'index_page.html',{'player':player})
+    else:
+        return render(request, 'index_page.html',)
+
+    
 
 def lboard_api(request):
     p = models.player.objects.order_by('-score','timestamp')
     cur_rank = 1
-
     for pl in p:
         pl.rank = cur_rank
         cur_rank += 1
