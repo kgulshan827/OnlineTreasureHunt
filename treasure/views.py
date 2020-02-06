@@ -23,6 +23,7 @@ def index(request):
         player = models.player.objects.get(user_id=request.user.pk)
         if player.current_level <= lastlevel:
             level = models.level.objects.get(l_number=player.current_level)
+            print(level.hint)
             return render(request, 'level.html', {'player': player, 'level': level})
         else:
             if player.current_level == numlevel + 1:

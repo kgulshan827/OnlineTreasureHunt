@@ -18,6 +18,7 @@ class level(models.Model):
     image = models.ImageField(upload_to = 'images',default='images/level1.jpg')
     audio = models.FileField(upload_to = 'audio',default='audios/default.mp3')
     text = models.TextField()
+    hint=models.TextField(default="na")
     answer = models.CharField(max_length=200)
     numuser = models.IntegerField(default=0)
     accuracy = models.FloatField(default=0)

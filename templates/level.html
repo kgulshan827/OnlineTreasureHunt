@@ -37,6 +37,13 @@
         <div class="lead" style="padding:10px; font-family: 'Montserrat', sans-serif;">
         {{ level.text }}
         </div>
+        {%ifnotequal level.hint "na"%}
+        
+        <div class="alert alert-success" role="alert">
+          <strong style="color: black;">Hint:</strong>
+          {{level.hint}}
+        </div>
+        {%endifnotequal%}
         </br>
             
         Enter your answer:
