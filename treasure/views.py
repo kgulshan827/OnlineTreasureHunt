@@ -100,18 +100,25 @@ def answer(request):
 
 
 def lboard(request):
+    config = models.config.objects.get(id=1)
+    show_lboard = config.show_lboard
+
+    if (not request.user.is_staff) and (not show_lboard):
+        return render(request, 'lboard.html', {'hide': True})
+
     p = models.player.objects.order_by('-score','timestamp')
     if request.user.is_authenticated:
-     player = models.player.objects.get(user_id=request.user.pk)
+        player = models.player.objects.get(user_id=request.user.pk)
     cur_rank = 1
 
     for pl in p:
         pl.rank = cur_rank
         cur_rank += 1
     if request.user.is_authenticated:
-     return render(request, 'lboard.html', {'players': p,'player':player})
+        return render(request, 'lboard.html', {'players': p,'player':player, 'hide': False})
     else:
-     return render(request, 'lboard.html', {'players': p})
+        return render(request, 'lboard.html', {'players': p, 'hide': False})
+
 
 def rules(request):
     if request.user.is_authenticated:
