@@ -101,9 +101,9 @@ def answer(request):
 
 def lboard(request):
     config = models.config.objects.get(id=1)
-    show_lboard = config.show_lboard
+    countdown = config.countdown
 
-    if (not request.user.is_staff) and (not show_lboard):
+    if (not request.user.is_staff) and (countdown):
         return render(request, 'lboard.html', {'hide': True})
 
     p = models.player.objects.order_by('-score','timestamp')
