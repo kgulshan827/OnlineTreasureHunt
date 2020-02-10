@@ -100,12 +100,6 @@ def answer(request):
 
 
 def lboard(request):
-    config = models.config.objects.get(id=1)
-    countdown = config.countdown
-
-    if (not request.user.is_staff) and (countdown):
-        return render(request, 'lboard.html', {'hide': False})
-
     p = models.player.objects.order_by('-score','timestamp')
     if request.user.is_authenticated:
         player = models.player.objects.get(user_id=request.user.pk)
