@@ -10,6 +10,7 @@ class player(models.Model):
     rank = models.IntegerField(default=0)
     timestamp = models.DateTimeField()
 
+
     def __str__(self):
         return self.name
 
@@ -31,6 +32,7 @@ class config(models.Model):
     totallevel = models.IntegerField(default=30)
     numlevel = models.IntegerField(default=30)
     countdown = models.BooleanField(default=False)
+    time = models.CharField(max_length=40,default=1)
 
     def __str__(self):
         return "App Level Configuration"
