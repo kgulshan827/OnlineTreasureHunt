@@ -4,7 +4,6 @@
 
 <!-- Example row of columns -->
 <div class="row">
-
       <!-- Jumbotron -->
       {%if level.image.url != '/media/images/level1.jpg' %}
       <div class="jumbotron border-shadow" style="margin-top:15px;background-color:rgba(255, 255, 255, 0.4);text-align: center; display: flex; justify-content: center;">
@@ -18,13 +17,21 @@
             <audio controls="" src="{{level.audio.url}}">
             </audio>
           </div>
-        </div> 
+      </div> 
         <hr>
         {%endif%}
         <br>
+      <!-- play video -->
+      <div class="col-lg-12">
+        <div style="font-size: 20px;text-align: center;color: white;">
+          <p>Video Hint</p>
+          <video width="320" height="240" controls>
+            <source src="{{ level.video.url }}" type="video/mp4">
+          </video>
+        </div>
+      </div>
 
     <div class="col-lg-12 rules border-shadow" style="padding:25px">
-
         {% block msgblock %}
         {% if messages %}
         {% for message in messages %}
