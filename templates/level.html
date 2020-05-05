@@ -10,26 +10,37 @@
         <img class="img-responsive" src="{{level.image.url}}" style="max-width: 400px; width: 100%;"/>
       </div>
       {%endif%}
-      <div class="col-lg-12 padleft" >
-        {%if level.audio.url != '/media/audios/default.mp3' %}
-          <div  style="font-size: 20px;text-align: center;color: white;">
+      <!-- play audio -->
+      
+      {% if level.display_audio %}
+        <div class="col-lg-12 padleft">
+          {%if level.audio.url != '/media/audios/default.mp3' %}
+          <div style="font-size: 20px;text-align: center;color: white;">
             <p>Audio Hint</p>
             <audio controls="" src="{{level.audio.url}}">
             </audio>
           </div>
-      </div> 
+        </div>
         <hr>
         {%endif%}
         <br>
-      <!-- play video -->
-      <div class="col-lg-12">
-        <div style="font-size: 20px;text-align: center;color: white;">
-          <p>Video Hint</p>
-          <video width="320" height="240" controls>
-            <source src="{{ level.video.url }}" type="video/mp4">
-          </video>
+      {% endif %}
+      
+      
+      {% if level.display_video %}
+        <!-- play video -->
+        <div class="col-lg-12">
+          <div style="font-size: 20px;text-align: center;color: white;">
+            <p>Video Hint</p>
+            <video width="320" height="240" controls>
+              <source src="{{ level.video.url }}" type="video/mp4">
+            </video>
+          </div>
         </div>
-      </div>
+      {% endif %}
+        
+      
+      
 
     <div class="col-lg-12 rules border-shadow" style="padding:25px">
         {% block msgblock %}
