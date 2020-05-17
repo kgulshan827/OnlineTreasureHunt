@@ -4,15 +4,116 @@
 
 <!-- Example row of columns -->
 <div class="row">
-      <!-- Jumbotron -->
-      {%if level.image.url != '/media/images/level1.jpg' %}
-      <div class="jumbotron border-shadow" style="margin-top:15px;background-color:rgba(255, 255, 255, 0.4);text-align: center; display: flex; justify-content: center;">
-        <img class="img-responsive" src="{{level.image.url}}" style="max-width: 400px; width: 100%;"/>
+	<!-- Jumbotron -->
+	{%if level.image.url != '/media/images/level1.jpg' %}
+	<div class="jumbotron border-shadow"
+		style="margin-top:15px;background-color:rgba(255, 255, 255, 0.4);text-align: center; display: flex; justify-content: center;">
+		<img class="img-responsive" src="{{level.image.url}}" style="max-width: 400px; width: 100%;" />
+	</div>
+	{%endif%}
+	<!-- play audio -->
+
+
+
+  
+  {% if level.display_audio %}
+    
+    {% if level.display_video %}
+
+      <!-- display both audio and video -->
+      <div class="col-sm-12">
+        <ul class="nav nav-tabs" id="myTab">
+          <li class="active"><a href="#audio" data-toggle="tab">Audio Hint</a></li>
+          <li><a href="#video" data-toggle="tab">Video Hint</a></li>
+        </ul>
       </div>
-      {%endif%}
-      <!-- play audio -->
+
+    {% else %}
+
+      <!-- display only audio -->
+      <div class="col-lg-12 padleft">
+        {%if level.audio.url != '/media/audios/default.mp3' %}
+        <div style="font-size: 20px;text-align: center;color: white;">
+          <p>Audio Hint</p>
+          <audio controls="" src="{{level.audio.url}}">
+          </audio>
+        </div>
+        {% endif %}
+      </div>
+      <hr>
+      <br>
       
-      {% if level.display_audio %}
+    {% endif %}
+      
+  {% else %}
+
+      <!-- display only video -->
+      <div class="col-lg-12">
+        <div style="font-size: 20px;text-align: center;color: white;">
+          <p>Video Hint</p>
+          <video width="320" height="240" controls>
+            <source src="{{ level.video.url }}" type="video/mp4">
+          </video>
+        </div>
+      </div>
+    
+  {% endif %}
+    
+	<div class="tab-content">
+		<div class="tab-pane active" id="audio">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+          <br>
+          <br>
+					<h3 class="panel-title" style="padding:10px; font-family: 'Montserrat', sans-serif;">Audio Hint</h3>
+				</div>
+				<div class="panel-body">
+					<div class="col-lg-12 padleft">
+						{%if level.audio.url != '/media/audios/default.mp3' %}
+						<div style="font-size: 20px;text-align: center;color: white;">
+							<p>Audio Hint</p>
+							<audio controls="" src="{{level.audio.url}}">
+							</audio>
+						</div>
+						{%endif%}
+					</div>
+				</div>
+			</div>
+    </div>
+    <div class="tab-pane" id="video">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <br><br>
+          <h3 class="panel-title" style="padding:10px; font-family: 'Montserrat', sans-serif;">Video Hint</h3>
+        </div>
+        <div class="panel-body">
+          <div class="col-lg-12">
+            <div style="font-size: 20px;text-align: center;color: white;">
+              <p>Video Hint</p>
+              <video width="320" height="240" controls>
+                <source src="{{ level.video.url }}" type="video/mp4">
+              </video>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+	</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<!-- {% if level.display_audio %}
         <div class="col-lg-12 padleft">
           {%if level.audio.url != '/media/audios/default.mp3' %}
           <div style="font-size: 20px;text-align: center;color: white;">
@@ -24,11 +125,11 @@
         <hr>
         {%endif%}
         <br>
-      {% endif %}
-      
-      
-      {% if level.display_video %}
-        <!-- play video -->
+      {% endif %} -->
+
+
+	<!-- {% if level.display_video %}
+        
         <div class="col-lg-12">
           <div style="font-size: 20px;text-align: center;color: white;">
             <p>Video Hint</p>
@@ -38,44 +139,45 @@
           </div>
         </div>
       {% endif %}
-        
-      
-      
+         -->
 
-    <div class="col-lg-12 rules border-shadow" style="padding:25px">
-        {% block msgblock %}
-        {% if messages %}
-        {% for message in messages %}
-        <div class="alert {% if message.tags %} alert-{% if message.tags == "error" %}danger{% else %}{{ message.tags }}{% endif %}"{% endif %} role="alert">{{ message }}</div>
-        {% endfor %}
-        {% endif %}
-        {% endblock %}
 
-        </br>
-        <div class="lead" style="padding:10px; font-family: 'Montserrat', sans-serif;">
-        Q. {{ level.text }}
-        </div>
-        {%ifnotequal level.hint "na"%}
-        
-        <div class="alert alert-success" role="alert">
-          <strong style="color: black;">Hint:</strong>
-          {{level.hint}}
-        </div>
-        {%endifnotequal%}
-        </br>
-            
-        Enter your answer:
-        <br>
-        <form id="ans" method="post" action="/answer/">
-            {% csrf_token %}
-            <br> <input type="text" name="ans" class="form-control" value="" size="50" autofocus/>
-            <br />
 
-            <input type="submit" class="btn btn-primary btn-lg btn-block" value="Submit Answer" />
+	<div class="col-lg-12 rules border-shadow" style="padding:25px">
+		{% block msgblock %}
+		{% if messages %}
+		{% for message in messages %}
+		<div class="alert {% if message.tags %} alert-{% if message.tags == "error" %}danger{% else %}{{ message.tags }}{% endif %}"
+			{% endif %} role="alert">{{ message }}</div>
+		{% endfor %}
+		{% endif %}
+		{% endblock %}
 
-        </form>
-      
-        </div>
+		</br>
+		<div class="lead" style="padding:10px; font-family: 'Montserrat', sans-serif;">
+			Q. {{ level.text }}
+		</div>
+		{%ifnotequal level.hint "na"%}
+
+		<div class="alert alert-success" role="alert">
+			<strong style="color: black;">Hint:</strong>
+			{{level.hint}}
+		</div>
+		{%endifnotequal%}
+		</br>
+
+		Enter your answer:
+		<br>
+		<form id="ans" method="post" action="/answer/">
+			{% csrf_token %}
+			<br> <input type="text" name="ans" class="form-control" value="" size="50" autofocus />
+			<br />
+
+			<input type="submit" class="btn btn-primary btn-lg btn-block" value="Submit Answer" />
+
+		</form>
+
+	</div>
 
 </div>
 
@@ -85,13 +187,13 @@
 
 
 <div id="target" style="display: none;">
-   <div class="col-lg-12 padleft" >
-        <div class="sidebox border-shadow" style="padding:15px;">
-          <p style="font-size:24px;text-align:center;opacity:0.8;">Number of people who crossed this level</p>
-          <p style="text-align:center;font-size:35px;color:green">{{level.numuser}}</p>
-          <p style="text-align:center;font-size:25px;color:#008080">Accuracy: {{level.accuracy}}</p>
-        </div>
-      </div>
+	<div class="col-lg-12 padleft">
+		<div class="sidebox border-shadow" style="padding:15px;">
+			<p style="font-size:24px;text-align:center;opacity:0.8;">Number of people who crossed this level</p>
+			<p style="text-align:center;font-size:35px;color:green">{{level.numuser}}</p>
+			<p style="text-align:center;font-size:25px;color:#008080">Accuracy: {{level.accuracy}}</p>
+		</div>
+	</div>
 </div>
 
 </div>
