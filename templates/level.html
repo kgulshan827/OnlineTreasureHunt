@@ -2,62 +2,152 @@
 
 {%block content%}
 
-<!-- Example row of columns -->
-<div class="row">
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
 
-      <!-- Jumbotron -->
-      {%if level.image.url != '/media/images/level1.jpg' %}
-      <div class="jumbotron border-shadow" style="margin-top:15px;background-color:rgba(255, 255, 255, 0.4);text-align: center; display: flex; justify-content: center;">
-        <img class="img-responsive" src="{{level.image.url}}" style="max-width: 400px; width: 100%;"/>
+<div class="container">
+              <div class="row">
+                <div class="col-xs-12 ">
+                  <nav>
+                    <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
+                      <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Image</a>
+                      <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Audio Hint</a>
+                      <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Video hint</a>
+                     
+                    </div>
+                  </nav>
+                  <div class="tab-content py-3 px-3 px-sm-0" id="nav-tabContent">
+                    <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                      {%if level.image.url != '/media/images/level1.jpg' %}
+                      <div class="jumbotron border-shadow"
+                        style="margin-top:15px;background-color:rgba(150, 150, 150, 0.2);text-align: center; display: flex; justify-content: center;">
+                        <img class="img-responsive" src="{{level.image.url}}" style="max-width: 600px; width: 100%;" />
+                      </div>
+                      {%endif%}
+                    </div>
+                    <div class="tab-pane fade show active" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                        <div class="col-lg-12 padleft">
+                          <div style="font-size: 20px;text-align: center;color: white;">
+                            <audio controls="" src="{{level.audio.url}}">
+                              </audio>
+                            
+                          </div>
+                        </div>
+                        <hr>
+                        <br>
+
+                    </div>
+                    <div class="tab-pane fade show active" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+                      <div class="col-lg-12">
+                        <div style="font-size: 20px;text-align: center;color: white;">
+                          <video width="300" height="200" controls>
+                            <source src="{{ level.video.url }}" type="video/mp4">
+                          </video>
+                        </div>
+                      </div>
+      
+                   
+                  </div>
+                
+               
+        </div>
       </div>
-      {%endif%}
-      <div class="col-lg-12 padleft" >
-        {%if level.audio.url != '/media/audios/default.mp3' %}
-          <div  style="font-size: 20px;text-align: center;color: white;">
+</div>
+
+
+
+
+
+
+
+
+
+<!-- Example row of columns -->
+
+	<!-- Jumbotron -->
+
+	<!-- play audio -->
+
+
+
+  
+  
+      
+ 
+    
+	
+
+
+
+
+
+	<!-- {% if level.display_audio %}
+        <div class="col-lg-12 padleft">
+          {%if level.audio.url != '/media/audios/default.mp3' %}
+          <div style="font-size: 20px;text-align: center;color: white;">
             <p>Audio Hint</p>
             <audio controls="" src="{{level.audio.url}}">
             </audio>
           </div>
-        </div> 
+        </div>
         <hr>
         {%endif%}
         <br>
+      {% endif %} -->
 
-    <div class="col-lg-12 rules border-shadow" style="padding:25px">
 
-        {% block msgblock %}
-        {% if messages %}
-        {% for message in messages %}
-        <div class="alert {% if message.tags %} alert-{% if message.tags == "error" %}danger{% else %}{{ message.tags }}{% endif %}"{% endif %} role="alert">{{ message }}</div>
-        {% endfor %}
-        {% endif %}
-        {% endblock %}
-
-        </br>
-        <div class="lead" style="padding:10px; font-family: 'Montserrat', sans-serif;">
-        Q. {{ level.text }}
-        </div>
-        {%ifnotequal level.hint "na"%}
+	<!-- {% if level.display_video %}
         
-        <div class="alert alert-success" role="alert">
-          <strong style="color: black;">Hint:</strong>
-          {{level.hint}}
+        <div class="col-lg-12">
+          <div style="font-size: 20px;text-align: center;color: white;">
+            <p>Video Hint</p>
+            <video width="320" height="240" controls>
+              <source src="{{ level.video.url }}" type="video/mp4">
+            </video>
+          </div>
         </div>
-        {%endifnotequal%}
-        </br>
-            
-        Enter your answer:
-        <br>
-        <form id="ans" method="post" action="/answer/">
-            {% csrf_token %}
-            <br> <input type="text" name="ans" class="form-control" value="" size="50" autofocus/>
-            <br />
+      {% endif %}
+         -->
 
-            <input type="submit" class="btn btn-primary btn-lg btn-block" value="Submit Answer" />
 
-        </form>
-      
-        </div>
+
+	<div class="col-lg-12 rules border-shadow" style="padding:25px">
+		{% block msgblock %}
+		{% if messages %}
+		{% for message in messages %}
+		<div class="alert {% if message.tags %} alert-{% if message.tags == "error" %}danger{% else %}{{ message.tags }}{% endif %}"
+			{% endif %} role="alert">{{ message }}</div>
+		{% endfor %}
+		{% endif %}
+		{% endblock %}
+
+		</br>
+		<div class="lead" style="padding:10px; font-family: 'Montserrat', sans-serif;">
+			Q. {{ level.text }}
+		</div>
+		{%ifnotequal level.hint "na"%}
+
+		<div class="alert alert-success" role="alert">
+			<strong style="color: black;">Hint:</strong>
+			{{level.hint}}
+		</div>
+		{%endifnotequal%}
+		</br>
+
+		Enter your answer:
+		<br>
+		<form id="ans" method="post" action="/answer/">
+			{% csrf_token %}
+			<br> <input type="text" name="ans" class="form-control" value="" size="50" autofocus />
+			<br />
+
+			<input type="submit" class="btn btn-primary btn-lg btn-block" value="Submit Answer" />
+
+		</form>
+
+	</div>
 
 </div>
 
@@ -67,13 +157,13 @@
 
 
 <div id="target" style="display: none;">
-   <div class="col-lg-12 padleft" >
-        <div class="sidebox border-shadow" style="padding:15px;">
-          <p style="font-size:24px;text-align:center;opacity:0.8;">Number of people who crossed this level</p>
-          <p style="text-align:center;font-size:35px;color:green">{{level.numuser}}</p>
-          <p style="text-align:center;font-size:25px;color:#008080">Accuracy: {{level.accuracy}}</p>
-        </div>
-      </div>
+	<div class="col-lg-12 padleft">
+		<div class="sidebox border-shadow" style="padding:15px;">
+			<p style="font-size:24px;text-align:center;opacity:0.8;">Number of people who crossed this level</p>
+			<p style="text-align:center;font-size:35px;color:green">{{level.numuser}}</p>
+			<p style="text-align:center;font-size:25px;color:#008080">Accuracy: {{level.accuracy}}</p>
+		</div>
+	</div>
 </div>
 
 </div>
