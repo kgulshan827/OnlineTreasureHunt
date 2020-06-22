@@ -13,8 +13,8 @@
                   <nav>
                     <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
                       <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Image</a>
-                      <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Audio Hint</a>
-                      <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Video hint</a>
+                      <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false" style="background-color: white;">Audio Hint</a>
+                      <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false" style ="background-color:white">Video hint</a>
                      
                     </div>
                   </nav>
@@ -29,23 +29,24 @@
                     </div>
                     <div class="tab-pane fade show active" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
                         <div class="col-lg-12 padleft">
-                          <div style="font-size: 20px;text-align: center;color: white;">
+                          <div class="jumbotron border-shadow"
+                          style="background-color:rgba(150, 150, 150, 0.2);text-align: center; display: flex; justify-content: center;">
                             <audio controls="" src="{{level.audio.url}}">
                               </audio>
-                            
+                            </div>
                           </div>
-                        </div>
+                        
                         <hr>
                         <br>
 
                     </div>
                     <div class="tab-pane fade show active" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
                       <div class="col-lg-12">
-                        <div style="font-size: 20px;text-align: center;color: white;">
+                        
                           <video width="300" height="200" controls>
                             <source src="{{ level.video.url }}" type="video/mp4">
                           </video>
-                        </div>
+                        
                       </div>
       
                    
@@ -78,6 +79,11 @@
  
     
 	
+
+
+
+
+
 
 
 
