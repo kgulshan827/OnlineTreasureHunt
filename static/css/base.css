@@ -187,3 +187,51 @@ td{
   margin: 0 auto;
   border-radius: 2px bold white;
 }
+
+/* CSS for the tab based hint system */
+
+#hint-nav > .nav.nav-tabs {
+  border: none;
+  color: #fff;
+  background: #272e38;
+  border-radius: 0;
+}
+
+
+#hint-nav > div a.nav-item.nav-link,
+#hint-nav > div a.nav-item.nav-link.active {
+  border: none;
+  padding: 18px 25px;
+  color: #fff;
+  background: #272e38;
+  border-radius: 0;
+  font-size: 1.2rem;
+}
+
+
+#hint-nav > div a.nav-item.nav-link.active:after {
+  content: "";
+  position: relative;
+  bottom: -60px;
+  left: -17%;
+  border: 15px solid transparent;
+  border-top-color: rgb(243, 102, 51);
+}
+
+
+.tab-content {
+  text-align: center;
+  line-height: 25px;
+  border: 1px solid #ddd;
+  padding: 30px 25px;
+}
+
+
+#hint-nav > div a.nav-item.nav-link:hover,
+#hint-nav > div a.nav-item.nav-link:focus {
+  border: none;
+  background: rgb(243, 102, 51);
+  color: #fff;
+  border-radius: 0;
+  transition: background 0.2s linear;
+}

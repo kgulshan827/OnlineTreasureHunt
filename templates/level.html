@@ -1,9 +1,44 @@
+
 {% extends 'base.html' %}
 
 {%block content%}
 
+
+<!-- Tab based hints -->
+
+
+
+
+
+
 <!-- Example row of columns -->
 <div class="row">
+  <div class="col-lg-12">
+    <nav id="hint-nav">
+      <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
+        <a class="nav-item nav-link active hint-title" id="nav-image-tab" data-toggle="tab" href="#nav-image" role="tab"
+          aria-controls="nav-image" aria-selected="true"><i class="far fa-image"></i>&nbsp; Image</a>
+        <a class="nav-item nav-link hint-title" id="nav-audio-tab" data-toggle="tab" href="#nav-audio" role="tab"
+          aria-controls="nav-audio" aria-selected="false"><i class="fas fa-music"></i>&nbsp; Audio</a>
+        <a class="nav-item nav-link hint-title" id="nav-video-tab" data-toggle="tab" href="#nav-video" role="tab"
+          aria-controls="nav-video" aria-selected="false"><i class="fas fa-video"></i>&nbsp; Video</a>
+      </div>
+    </nav>
+    <div class="tab-content py-3 px-3 px-sm-0">
+      <div class="tab-pane fade show active" id="nav-image" role="tabpanel" aria-labelledby="nav-image-tab">
+        <!-- IMAGE HINT -->
+        <h1>Some Random Image here</h1>
+      </div>
+      <div class="tab-pane fade" id="nav-audio" role="tabpanel" aria-labelledby="nav-audio-tab">
+        <!-- AUDIO HINT -->
+        <h1>Some Random Audio here</h1>
+      </div>
+      <div class="tab-pane fade" id="nav-video" role="tabpanel" aria-labelledby="nav-video-tab">
+        <!-- VIDEO HINT -->
+        <h1>Some Random Video here</h1>
+      </div>
+    </div>
+  </div>
 	<!-- Jumbotron -->
 	{%if level.image.url != '/media/images/level1.jpg' %}
 	<div class="jumbotron border-shadow"
