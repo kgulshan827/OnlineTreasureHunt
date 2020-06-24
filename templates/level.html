@@ -6,145 +6,99 @@
 
 <!-- Tab based hints -->
 
-
-
-
-
-
-<!-- Example row of columns -->
 <div class="row">
-  <div class="col-lg-12">
-    <nav id="hint-nav">
-      <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
-        <a class="nav-item nav-link active hint-title" id="nav-image-tab" data-toggle="tab" href="#nav-image" role="tab"
-          aria-controls="nav-image" aria-selected="true"><i class="far fa-image"></i>&nbsp; Image</a>
-        <a class="nav-item nav-link hint-title" id="nav-audio-tab" data-toggle="tab" href="#nav-audio" role="tab"
-          aria-controls="nav-audio" aria-selected="false"><i class="fas fa-music"></i>&nbsp; Audio</a>
-        <a class="nav-item nav-link hint-title" id="nav-video-tab" data-toggle="tab" href="#nav-video" role="tab"
-          aria-controls="nav-video" aria-selected="false"><i class="fas fa-video"></i>&nbsp; Video</a>
-      </div>
-    </nav>
-    <div class="tab-content py-3 px-3 px-sm-0">
-      <div class="tab-pane fade show active" id="nav-image" role="tabpanel" aria-labelledby="nav-image-tab">
-        <!-- IMAGE HINT -->
-        <h1>Some Random Image here</h1>
-      </div>
-      <div class="tab-pane fade" id="nav-audio" role="tabpanel" aria-labelledby="nav-audio-tab">
-        <!-- AUDIO HINT -->
-        <h1>Some Random Audio here</h1>
-      </div>
-      <div class="tab-pane fade" id="nav-video" role="tabpanel" aria-labelledby="nav-video-tab">
-        <!-- VIDEO HINT -->
-        <h1>Some Random Video here</h1>
-      </div>
-    </div>
-  </div>
-	<!-- Jumbotron -->
-	{%if level.image.url != '/media/images/level1.jpg' %}
-	<div class="jumbotron border-shadow"
-		style="margin-top:15px;background-color:rgba(255, 255, 255, 0.4);text-align: center; display: flex; justify-content: center;">
-		<img class="img-responsive" src="{{level.image.url}}" style="max-width: 400px; width: 100%;" />
-	</div>
-	{%endif%}
-	<!-- play audio -->
-
-
-
-  
-  {% if level.display_audio %}
-    
-    {% if level.display_video %}
-
-      <!-- display both audio and video -->
-      <div class="col-sm-12">
-        <ul class="nav nav-tabs" id="myTab">
-          <li class="active"><a href="#audio" data-toggle="tab">Audio Hint</a></li>
-          <li><a href="#video" data-toggle="tab">Video Hint</a></li>
+  <div class="col">
+    <div class="panel with-nav-tabs panel-default">
+      <div class="panel-heading" style="background-color: transparent;">
+        <ul class="nav nav-tabs">
+          <li class="active hint-list-item"><a href="#image-hint" data-toggle="tab" class="hint-title"><i class="far fa-image"></i>&nbsp; Image</a></li>
+          <li class="hint-list-item"><a href="#audio-hint" data-toggle="tab" class="hint-title"><i class="fas fa-music"></i>&nbsp;&nbsp; Audio </a></li>
+          <li class="hint-list-item"><a href="#video-hint" data-toggle="tab" class="hint-title"><i class="fas fa-video"></i>&nbsp; Video </a></li>
         </ul>
       </div>
-
-    {% else %}
-
-      <!-- display only audio -->
-      <div class="col-lg-12 padleft">
-        {%if level.audio.url != '/media/audios/default.mp3' %}
-        <div style="font-size: 20px;text-align: center;color: white;">
-          <p>Audio Hint</p>
-          <audio controls="" src="{{level.audio.url}}">
-          </audio>
-        </div>
-        {% endif %}
-      </div>
-      <hr>
-      <br>
-      
-    {% endif %}
-      
-  {% else %}
-
-      <!-- display only video -->
-      <div class="col-lg-12">
-        <div style="font-size: 20px;text-align: center;color: white;">
-          <p>Video Hint</p>
-          <video width="320" height="240" controls>
-            <source src="{{ level.video.url }}" type="video/mp4">
-          </video>
-        </div>
-      </div>
-    
-  {% endif %}
-    
-	<div class="tab-content">
-		<div class="tab-pane active" id="audio">
-			<div class="panel panel-default">
-				<div class="panel-heading">
-          <br>
-          <br>
-					<h3 class="panel-title" style="padding:10px; font-family: 'Montserrat', sans-serif;">Audio Hint</h3>
-				</div>
-				<div class="panel-body">
-					<div class="col-lg-12 padleft">
-						{%if level.audio.url != '/media/audios/default.mp3' %}
-						<div style="font-size: 20px;text-align: center;color: white;">
-							<p>Audio Hint</p>
-							<audio controls="" src="{{level.audio.url}}">
-							</audio>
-						</div>
-						{%endif%}
-					</div>
-				</div>
-			</div>
-    </div>
-    <div class="tab-pane" id="video">
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <br><br>
-          <h3 class="panel-title" style="padding:10px; font-family: 'Montserrat', sans-serif;">Video Hint</h3>
-        </div>
-        <div class="panel-body">
-          <div class="col-lg-12">
-            <div style="font-size: 20px;text-align: center;color: white;">
-              <p>Video Hint</p>
-              <video width="320" height="240" controls>
-                <source src="{{ level.video.url }}" type="video/mp4">
-              </video>
+      <div class="panel-body">
+        <div class="tab-content">
+          <div class="tab-pane fade in active" id="image-hint">
+            <!-- Image for the Question -->
+            {%if level.image.url != '/media/images/level1.jpg' %}
+              <div class="jumbotron border-shadow"
+                style="margin-top:15px;background-color:rgba(255, 255, 255, 0.4);text-align: center; display: flex; justify-content: center;">
+                <img class="img-responsive hint-image" src="{{level.image.url}}"/>
+              </div>
+            {%endif%}
+          </div>
+          <div class="tab-pane fade" id="audio-hint">
+            <!-- AUDIO HINT -->
+            <div class="song-detail container-fluid">
+            
+              <div class="card mb-4" style="box-shadow: -5px -5px 15px black; border-radius: 15px; margin: 0 auto;">
+            
+                <video id="background-video" src="https://pixabay.com/videos/download/video-37169_medium.mp4" loop></video>
+            
+                <div class="card-body">
+                  <!-- <div class="progress-bar">       
+                      <div id="completed"></div>
+                        <input type="range" min="0" max="100" value="0" id="progress">
+                      </div> -->
+                  <div class="audio-slider-container">
+                    <div class="audio-slider"></div>
+                  </div>
+                  <!-- Play and pause button -->
+                  <ion-icon id="audio-play-pause" name="play"></ion-icon>
+            
+                  <div class="audio-volume-controls">
+                    <ion-icon class="volume-icon" id="mute" name="volume-mute"></ion-icon>
+                    <input id="audio-vol-control" type="range" min="0" max="100" step="1"></input>
+                    <ion-icon class="volume-icon" id="max-volume" name="volume-high"></ion-icon>
+                  </div>
+            
+                  <audio src="{{ level.audio.url }}" id="song"></audio>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="tab-pane fade" id="video-hint">
+            <!-- Video Hint -->
+            <div class="card">
+              <div class="c-video">
+                <video src="{{ level.video.url }}" class="video"></video>
+                <button id="video-play-pause" class="hidden"></button>
+                <div class="video-controls">
+                  <div class="video-slider">
+                    <div class="slider-color"></div>
+                    <!-- <input id="progress-bar" type="range" min="0" max="100" step="1" value="0"></input> -->
+                  </div>
+                  <div class="video-volume-controls">
+                    <ion-icon class="volume-icon" id="mute" name="volume-mute"></ion-icon>
+                    <input id="vol-control" type="range" min="0" max="100" step="1"></input>
+                    <ion-icon class="volume-icon" id="max-volume" name="volume-high"></ion-icon>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
+  </div>
+</div>
+
+
+<!-- Example row of columns -->
+
+	<!-- Jumbotron -->
+	<!-- {%if level.image.url != '/media/images/level1.jpg' %}
+	<div class="jumbotron border-shadow"
+		style="margin-top:15px;background-color:rgba(255, 255, 255, 0.4);text-align: center; display: flex; justify-content: center;">
+		<img class="img-responsive" src="{{level.image.url}}" style="max-width: 400px; width: 100%;" />
 	</div>
+  {%endif%} -->
+  
 
 
 
 
-
-
-
-
-
-
-
+	<!-- play audio -->
 
 
 
