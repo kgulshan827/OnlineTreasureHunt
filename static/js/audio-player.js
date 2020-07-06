@@ -2,7 +2,8 @@ var audioVolumeControl = document.getElementById("audio-vol-control");
 var song = document.getElementById("song");
 var audioPlayPause = document.getElementById("audio-play-pause");
 var backgroundVideo = document.getElementById("background-video");
-var audioSlider = document.querySelector(".audio-slider");
+// var audioSlider = document.querySelector(".audio-slider");
+var audioProgress = document.getElementById("audio-progress");
 
 let playing = false;
 
@@ -32,13 +33,25 @@ audioVolumeControl.addEventListener("input", function () {
   song.volume = this.value / 100;
 });
 
+// Audio Slider Controls
+
+audioProgress.addEventListener("change", function () {
+  song.currentTime = (this.value / 100) * song.duration;
+});
+
+// audioProgress.addEventListener("input", function () {
+//   song.currentTime = (this.value / 100) * song.duration;
+// });
+
+
 // Audio Slider
 
 song.addEventListener("timeupdate", function () {
   var sliderPosition = song.currentTime / song.duration;
-  audioSlider.style.width = sliderPosition * 100 + "%";
+  audioProgress.value = sliderPosition * 100;
 
   if (song.ended) {
+    playing = false;
     backgroundVideo.pause();
     audioPlayPause.setAttribute("name", "play");
   }

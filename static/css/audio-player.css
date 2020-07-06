@@ -13,11 +13,11 @@
   background-color:  rgb(53, 51, 51)
 }
 
-.audio-slider {
+/* .audio-slider {
   height: 5px;
   background-color: teal;
   width: 0px;
-}
+} */
 
 #audio-play-pause {
   color: #ffffff;
@@ -39,6 +39,8 @@
 .volume-icon {
   color: #ffffff;
   font-size: 20px;
+  position: relative;
+  left: 0;
 }
 
 #audio-vol-control {
@@ -48,6 +50,8 @@
   bottom: 5px;
 }
 
+
+/* CSS for the volume controls */
 @media screen and (-webkit-min-device-pixel-ratio: 0) {
   #audio-vol-control {
     overflow: hidden;
@@ -74,8 +78,40 @@
   }
 }
 
+/* CSS for the Progress Bar */
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+  #audio-progress {
+    overflow: hidden;
+    /* width: 140px; */
+    width: 100%;
+    -webkit-appearance: none;
+    background-color: rgb(53, 51, 51);
+    border: none;
+  }
+
+  #audio-progress::-webkit-slider-runnable-track {
+    height: 7px;
+    -webkit-appearance: none;
+    color: orange;
+    margin-top: 0px;
+    border: none;
+  }
+
+  #audio-progress::-webkit-slider-thumb {
+    width: 7px;
+    -webkit-appearance: none;
+    height: 7px;
+    cursor: pointer;
+    /* background: #434343; */
+    background: white;
+    /* box-shadow: -300px 0 300px teal; */
+    box-shadow: -1000px 0 0 1000px teal;
+    border: none;
+  }
+}
+
 @media (max-width: 700px) {
   .card {
-    height: 400px;
+    height: 520px;
   }
 }
