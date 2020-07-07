@@ -39,7 +39,7 @@
     pip install -r requirements.txt
 
     ```
-5.Go to the path   venv/lob/django/contrib/auth/urls.py.
+5.Go to the path   venv/lib/django/contrib/auth/urls.py.
   change app_name="auth"
    
 5. Run the Migrations
