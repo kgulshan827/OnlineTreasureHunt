@@ -31,7 +31,7 @@
             <!-- AUDIO HINT -->
             <div class="song-detail container-fluid">
             
-              <div class="card mb-4" style="box-shadow: -5px -5px 15px black; border-radius: 15px; margin: 0 auto;">
+              <div class="card mb-4" id="audio-card" style="box-shadow: -5px -5px 15px black; border-radius: 15px; margin: 0 auto;">
             
                 <video id="background-video" src="https://pixabay.com/videos/download/video-37169_medium.mp4" loop></video>
             
@@ -40,18 +40,16 @@
                     <!-- <div id="completed"></div> -->
                     <input type="range" min="0" max="100" value="0" id="audio-progress">
                   </div>
-                  <!-- <div class="audio-slider-container">
-                    <div class="audio-slider"></div>
-                  </div> -->
-                  <!-- Play and pause button -->
-                  <ion-icon id="audio-play-pause" name="play"></ion-icon>
-            
-                  <div class="audio-volume-controls">
-                    <ion-icon class="volume-icon" id="mute" name="volume-mute"></ion-icon>
-                    <input id="audio-vol-control" type="range" min="0" max="100" step="1"></input>
-                    <ion-icon class="volume-icon" id="max-volume" name="volume-high"></ion-icon>
+                  <div class="audio-controls">
+                    <!-- Play and pause button -->
+                    <ion-icon id="audio-play-pause" name="play"></ion-icon>
+                    
+                    <span class="audio-volume-controls">
+                      <ion-icon class="volume-icon" id="mute" name="volume-mute"></ion-icon>
+                      <input id="audio-vol-control" type="range" min="0" max="100" step="1"></input>
+                      <ion-icon class="volume-icon" id="max-volume" name="volume-high"></ion-icon>
+                    </span>
                   </div>
-            
                   <audio src="{{ level.audio.url }}" id="song"></audio>
                 </div>
               </div>
@@ -59,19 +57,23 @@
           </div>
           <div class="tab-pane fade" id="video-hint">
             <!-- Video Hint -->
-            <div class="card">
-              <div class="c-video">
-                <video src="{{ level.video.url }}" class="video"></video>
-                <button id="video-play-pause" class="hidden"></button>
-                <div class="video-controls">
-                  <div class="video-slider">
-                    <div class="slider-color"></div>
-                    <!-- <input id="progress-bar" type="range" min="0" max="100" step="1" value="0"></input> -->
+            <div class="video-hint">
+              <div class="card mb-4" id="video-card" style="box-shadow: -5px -5px 15px black; border-radius: 15px; margin: 0 auto;">
+                <div class="video-container">
+                  <video src="{{ level.video.url }}" id="video"></video>
+                </div>
+                <div class="card-body">
+                  <div class="video-progress-bar">
+                    <input type="range" id="video-progress" min="0" max="100">
                   </div>
-                  <div class="video-volume-controls">
-                    <ion-icon class="volume-icon" id="mute" name="volume-mute"></ion-icon>
-                    <input id="vol-control" type="range" min="0" max="100" step="1"></input>
-                    <ion-icon class="volume-icon" id="max-volume" name="volume-high"></ion-icon>
+                  <!-- Play and pause button -->
+                  <div class="video-controls">
+                    <ion-icon id="video-play-pause" name="play"></ion-icon>
+                    <span class="video-volume-controls">
+                      <ion-icon class="volume-icon" id="mute" name="volume-mute"></ion-icon>
+                      <input id="video-vol-control" type="range" min="0" max="100" step="1"></input>
+                      <ion-icon class="volume-icon" id="max-volume" name="volume-high"></ion-icon>
+                    </span>
                   </div>
                 </div>
               </div>

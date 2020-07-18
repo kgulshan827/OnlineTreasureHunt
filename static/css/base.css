@@ -222,7 +222,7 @@ td{
   line-height: 25px;
   border-top: 5px solid rgb(243, 102, 51);
   border-bottom: 5px solid rgb(243, 102, 51);
-  padding: 30px 25px;
+  padding: 30px 0;
 }
 
 .with-nav-tabs {
