@@ -7,46 +7,63 @@ let videoPlaying = false;
 videoProgress.setAttribute("value", "0");
 // Song Play and Pause
 
-videoPlayPause.addEventListener("click", function () {
-  if (videoPlaying) {
-    videoPlaying = false;
-    video.pause();
-    videoPlayPause.setAttribute("name", "play");
-  } else {
-    videoPlaying = true;
-    video.play();
-    videoPlayPause.setAttribute("name", "pause");
-  }
-});
 
-// Video Volume Controls
+if (video.readyState > 0) {
+  console.log("video duration :", video.duration);
+  videoPlayPause.addEventListener("click", function () {
+    if (videoPlaying) {
+      videoPlaying = false;
+      video.pause();
+      videoPlayPause.setAttribute("name", "play");
+    } else {
+      videoPlaying = true;
+      video.play();
+      videoPlayPause.setAttribute("name", "pause");
+    }
+  });
 
-videoVolumeControl.addEventListener("change", function () {
-  video.volume = this.value / 100;
-});
+  // Video Volume Controls
 
-videoVolumeControl.addEventListener("input", function () {
-  video.volume = this.value / 100;
-});
+  videoVolumeControl.addEventListener("change", function () {
+    video.volume = this.value / 100;
+  });
 
-// Video Slider Controls
+  videoVolumeControl.addEventListener("input", function () {
+    video.volume = this.value / 100;
+  });
 
-videoProgress.addEventListener("change", function () {
-  video.currentTime = (this.value / 100) * video.duration;
-});
+  // Video Slider Controls
 
-videoProgress.addEventListener("input", function () {
-  video.currentTime = (this.value / 100) * video.duration;
-});
+  videoProgress.addEventListener("change", function () {
+    video.currentTime = (this.value / 100) * video.duration;
+    console.log(this.value);
+    console.log(video.duration);
+    console.log(video.currentTime);
+  });
 
-// Video Slider
+  videoProgress.addEventListener("input", function () {
+    video.currentTime = (this.value / 100) * video.duration;
+    a = (this.value / 100) * video.duration;
+    console.log(this.value);
+    console.log("video duration: " ,video.duration);
+    console.log("Expected current time: ", a);
+    video.currentTime = a;
+    console.log("Current Time: ", video.currentTime);
+  });
 
-video.addEventListener("timeupdate", function () {
-  var sliderPosition = video.currentTime / video.duration;
-  videoProgress.value = sliderPosition * 100;
+  // Video Slider
 
-  if (video.ended) {
-    videoPlaying = false;
-    videoPlayPause.setAttribute("name", "play");
-  }
-});
+  video.addEventListener("timeupdate", function () {
+    var sliderPosition = video.currentTime / video.duration;
+    videoProgress.value = sliderPosition * 100;
+
+    if (video.ended) {
+      videoPlaying = false;
+      videoPlayPause.setAttribute("name", "play");
+    }
+  });
+}
+
+
+
+
