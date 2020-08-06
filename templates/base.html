@@ -1,92 +1,88 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <meta name="description" content="">
-    <meta name="author" content=""> 
-    <link rel="icon" href="{% static 'img/favicon.ico' %}">
-    
-<script src="{% static 'js/particle.js' %}"></script>
 
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="icon" href="{% static 'img/favicon.ico' %}">
 
-    <title>Online Treasure Hunt</title>
-    
-    <!-- Bootstrap core CSS -->
-    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+  <script src="{% static 'js/particle.js' %}"></script>
 
-    <!-- Custom styles for this template -->
-    <link href="{% static 'css/justified-nav.css' %}" rel="stylesheet">
+  <title>Online Treasure Hunt</title>
 
-    <link href="{% static 'css/bootstrap-social.css' %}" rel="stylesheet">
+  <!-- Bootstrap core CSS -->
+  <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
 
-    <link href="{% static 'css/footer.css' %}" rel="stylesheet">
+  <!-- Custom styles for this template -->
+  <link href="{% static 'css/justified-nav.css' %}" rel="stylesheet">
 
-    <link href="{% static 'css/base.css' %}" rel="stylesheet">
+  <link href="{% static 'css/bootstrap-social.css' %}" rel="stylesheet">
 
-    <link href="{% static 'css/button.css' %}" rel="stylesheet">
+  <link href="{% static 'css/footer.css' %}" rel="stylesheet">
 
-    <link href="{% static 'css/timer.css' %}" rel="stylesheet">  
-    
-    <!-- Stylesheets for the Audio and Video Players -->
+  <link href="{% static 'css/base.css' %}" rel="stylesheet">
 
-    <link rel="stylesheet" href="{% static 'css/audio-player.css' %}">
-    <link rel="stylesheet" href="{% static 'css/video-player.css' %}">
-    
-    <link href="https://fonts.googleapis.com/css?family=Iceland&display=swap" rel="stylesheet">
+  <link href="{% static 'css/button.css' %}" rel="stylesheet">
 
-    <link href="https://fonts.googleapis.com/css?family=Orbitron&display=swap" rel="stylesheet">
+  <link href="{% static 'css/timer.css' %}" rel="stylesheet">
 
-    <link href="https://fonts.googleapis.com/css?family=Sigmar+One&display=swap" rel="stylesheet">
+  <!-- Stylesheets for the Audio and Video Players -->
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.css">
+  <link rel="stylesheet" href="{% static 'css/audio-player.css' %}">
+  <link rel="stylesheet" href="{% static 'css/video-player.css' %}">
 
-    <link href="https://fonts.googleapis.com/css?family=Capriola|Creepster|Droid+Sans|Merriweather|Montserrat" rel="stylesheet">
-  
-  </head>
-  
+  <link href="https://fonts.googleapis.com/css?family=Iceland&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Orbitron&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Sigmar+One&display=swap" rel="stylesheet">
 
-  <div id="particle"></div>
-  
-  <div id="overlay"> 
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.css">
+
+  <link href="https://fonts.googleapis.com/css?family=Capriola|Creepster|Droid+Sans|Merriweather|Montserrat"
+    rel="stylesheet">
+</head>
+<div id="particle"></div>
+
+<div id="overlay">
+
   <body class="bodypad">
     <nav class="navbar navbar-dark">
       <div class="container1">
         <div class="navbar-header">
-          <button style="background-color:#f5f5f5" type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <button style="background-color:#f5f5f5" type="button" class="navbar-toggle" data-toggle="collapse"
+            data-target="#myNavbar">
             <span9 class="icon-bar"></span9>
             <span9 class="icon-bar"></span9>
             <span9 class="icon-bar"></span9>
           </button>
-          <a href="/" style="color:#f5f5f5" class="navbar-brand"><span92>🔍</span92><span91 style=" width:10px;height:10px;margin-left:10px;font-family: 'Iceland';font-size:25px;font-weight:20px;opacity: 0.8;">Online Treasure Hunt</span91>
+          <a href="/" style="color:#f5f5f5" class="navbar-brand">
+            <span92>🔍</span92>
+            <span91
+              style=" width:10px;height:10px;margin-left:10px;font-family: 'Iceland';font-size:25px;font-weight:20px;opacity: 0.8;">
+              Online Treasure Hunt</span91>
           </a>
           {%if user.is_authenticated%}
-          <div class="navbar-brand" style="color:gray;font-family:'Capriola',sans-serif;" >Your Score :   <span style="font-weight:bold;color:rgb(8, 119, 8)">{{player.score}} points</span></div>
+          <div class="navbar-brand" style="color:gray;font-family:'Capriola',sans-serif;">
+            Your Score : <span style="font-weight:bold;color:rgb(8, 119, 8)">{{player.score}} points</span>
+          </div>
           {%endif%}
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
           <ul class="nav navbar-nav navbar-right">
-    
+
             <li><a style="font-family:'Capriola',sans-serif;font-size:20px" href="/rules">Rules</a></li>
             <li><a style="font-family:'Capriola',sans-serif;font-size:20px" href="/lboard/">Leaderboard</a></li>
             {%if user.is_authenticated%}
-            <li class="dropdown">
-              <button class="dropdown-toggle btn btn-default navbar-btn" data-toggle="dropdown" style="margin-left:10px;background-color:#f5f5f5" >
-    
-    
-    <b>{{ user.get_full_name|default:user.username }}</b>
-    
-              <span9 class="caret"></span9>
-              </button>
-              
-              <ul class="dropdown-menu">
-            <li><a href="{% url 'auth:logout' %}?next={{ '/' }}"><b>Logout</b></a></li>
-              </ul>
-             
+            <li class="user">
+              <span class="user" style="font-family:'Capriola',sans-serif;font-size:20px">
+              <b><i class="fas fa-user"></i> {{ user.get_full_name|default:user.username }}</b></span>
             </li>
+            <li><a style="font-family:'Capriola',sans-serif;font-size:20px"
+                href="{% url 'auth:logout' %}?next={{ '/' }}">Logout</a></li>
             {%endif%}
           </ul>
         </div>
@@ -94,58 +90,56 @@
     </nav>
 
     <div class="container">
-     
 
-
-    {% block content %}
-    {% endblock %}
-
-
-
+      {% block content %}
+      {% endblock %}
 
       <!-- Site footer -->
-
 
     </div> <!-- /container -->
     <div class="footer">
       <div class="footerft">
         <div id="button_ft"></div>
         <div id="container_ft">
-        <div id="cont">
-          <div class="footer_center">
-            <p style="color:white;">&copy; 2020. <strong>Developed by</strong> Team Aavishkar, NIT Durgapur</p>
-           <a target="__blank" href="https://www.facebook.com/arhn.nitd/"><img src="/static/img/AarohanLogo.png" alt="Aarohanlogo"></a> 
+          <div id="cont">
+            <div class="footer_center">
+              <p style="color:white;">&copy; 2020. <strong>Developed by</strong> Team Aavishkar, NIT Durgapur</p>
+              <a target="__blank" href="https://www.facebook.com/arhn.nitd/"><img src="/static/img/AarohanLogo.png"
+                  alt="Aarohanlogo"></a>
+            </div>
           </div>
-        </div>
-    
+
         </div>
       </div>
-      </div> 
-      
     </div>
 
-  </div>
+</div>
+
+</div>
 
 <br>
 <canvas class="background"></canvas>
-  <!-- Bootstrap core JavaScript
+<!-- Bootstrap core JavaScript
     ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
-    <script src="https://kit.fontawesome.com/fba5b46cec.js" crossorigin="anonymous"></script>
-    <script src="{% static 'js/bootstrap.min.js' %}"></script>
-    <script src="{% static 'js/jss.js' %}"></script>
-    <script src="{% static 'js/timer.js' %}"></script> 
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
+<script src="https://kit.fontawesome.com/fba5b46cec.js" crossorigin="anonymous"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/jss.js' %}"></script>
+<script src="{% static 'js/timer.js' %}"></script>
 
-    <!-- Script for the audio and video players -->
-    <script src="{% static 'js/audio-player.js' %}"></script>
-    <script src="{% static 'js/video-player.js' %}"></script>
-    
+<!-- Script for the audio and video players -->
+<script src="{% static 'js/audio-player.js' %}"></script>
+<script src="{% static 'js/video-player.js' %}"></script>
 
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js">
-    </script>
-    <script>var options = {"particles":{"number":{"value":99,"density":{"enable":true,"value_area":552.4033491425909}},"color":{"value":"#ffffff"},"shape":{"type":"circle","stroke":{"width":0,"color":"#000000"},"polygon":{"nb_sides":3},"image":{"src":"img/github.svg","width":70,"height":100}},"opacity":{"value":1,"random":true,"anim":{"enable":false,"speed":1,"opacity_min":0.1,"sync":false}},"size":{"value":2,"random":true,"anim":{"enable":false,"speed":40,"size_min":0.1,"sync":false}},"line_linked":{"enable":false,"distance":150,"color":"#ffffff","opacity":0.4,"width":1},"move":{"enable":true,"speed":1.5782952832645452,"direction":"none","random":true,"straight":false,"out_mode":"out","bounce":false,"attract":{"enable":false,"rotateX":600,"rotateY":1200}}},"interactivity":{"detect_on":"canvas","events":{"onhover":{"enable":false,"mode":"repulse"},"onclick":{"enable":true,"mode":"repulse"},"resize":true},"modes":{"grab":{"distance":400,"line_linked":{"opacity":1}},"bubble":{"distance":400,"size":40,"duration":2,"opacity":8,"speed":3},"repulse":{"distance":200,"duration":0.4},"push":{"particles_nb":4},"remove":{"particles_nb":2}}},"retina_detect":false};
-    particlesJS("particle", options);</script>
-  </body>
+
+<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js">
+</script>
+<script>
+  var options = { "particles": { "number": { "value": 99, "density": { "enable": true, "value_area": 552.4033491425909 } }, "color": { "value": "#ffffff" }, "shape": { "type": "circle", "stroke": { "width": 0, "color": "#000000" }, "polygon": { "nb_sides": 3 }, "image": { "src": "img/github.svg", "width": 70, "height": 100 } }, "opacity": { "value": 1, "random": true, "anim": { "enable": false, "speed": 1, "opacity_min": 0.1, "sync": false } }, "size": { "value": 2, "random": true, "anim": { "enable": false, "speed": 40, "size_min": 0.1, "sync": false } }, "line_linked": { "enable": false, "distance": 150, "color": "#ffffff", "opacity": 0.4, "width": 1 }, "move": { "enable": true, "speed": 1.5782952832645452, "direction": "none", "random": true, "straight": false, "out_mode": "out", "bounce": false, "attract": { "enable": false, "rotateX": 600, "rotateY": 1200 } } }, "interactivity": { "detect_on": "canvas", "events": { "onhover": { "enable": false, "mode": "repulse" }, "onclick": { "enable": true, "mode": "repulse" }, "resize": true }, "modes": { "grab": { "distance": 400, "line_linked": { "opacity": 1 } }, "bubble": { "distance": 400, "size": 40, "duration": 2, "opacity": 8, "speed": 3 }, "repulse": { "distance": 200, "duration": 0.4 }, "push": { "particles_nb": 4 }, "remove": { "particles_nb": 2 } } }, "retina_detect": false };
+  particlesJS("particle", options);
+</script>
+</body>
+
 </html>

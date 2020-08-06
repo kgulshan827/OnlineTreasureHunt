@@ -292,3 +292,9 @@ li.active > a:after {
   padding: 10px 0 10px 0;
   margin-bottom: 20px;
 }
+
+.user {
+  color:#7fcae0;
+  display: inline-block;
+  margin-top: 5.5px;
+}
