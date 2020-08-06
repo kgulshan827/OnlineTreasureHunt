@@ -40,13 +40,14 @@ background:rgba(255,255,255,0.7) */
 .nav-justified {background-color: white}
 .bodypad{
 background: #1B809E; /* fallback for old browsers */
-background-image: url("../img/HQ.jpg")!important;
+background-image: url("../img/wallpaper1.jpg")!important;
 background-attachment: fixed;
 
 -webkit-background-size: cover;
 -moz-background-size: cover;
 -o-background-size: cover;
 background-size: cover;
+background-position: center;
 
   /*background-repeat: no-repeat!important;*/
   /*background-position: right top!important;*/
