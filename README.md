@@ -1,13 +1,13 @@
 # OnlineTreasureHunt
 
- The app allows you to play an OnlineTreasureHunt consisting of different levels.Players can login either using their **Google** or **Facebook** accounts. Each level has a question and hints along with it like **visual hints**, **audio hints**, **video hints** .Each question would fetch you 10 points. Once the player answers the question the leaderboard is updated accordingly.
+ The app allows you to play an OnlineTreasureHunt consisting of different levels.Players can login either using their <code>Google</code> or </code>Facebook</code> accounts. Each level has a question and hints along with it like **visual hints**, **audio hints**, **video hints** .Each question would fetch you 10 points. Once the player answers the question the leaderboard is updated accordingly.
   
 
 
 ##  Setting up the Project
 
 
-1. Create a **virtual environment** with venv .
+1. Create a </code>virtual environment</code> .
 
     mkdir project
 
@@ -40,7 +40,7 @@
     ```
 5. Go to the path   venv/lib/django/contrib/auth/urls.py.
 
-    after all the import statements add **app_name='auth'** on the next line
+    after all the import statements add <code>app_name='auth'</code> on the next line
 
 6. Set the environment variables
 
@@ -69,7 +69,7 @@
 
 11. Add config and some levels to begin with.
 
-12. Now you can login with your **Google** / **Facebook** account and enjoy the game
+12. Now you can login with your <code>Google</code> / </code>Facebook</code> account and enjoy the game
 
 
 ![image](https://github.com/kgulshan827/OnlineTreasureHunt/blob/master/pic.png)
