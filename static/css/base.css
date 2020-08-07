@@ -276,6 +276,11 @@ li.active > a:after {
   border-top-color: rgb(243, 102, 51);
 }
 
+a.disabled {
+  pointer-events: none;
+  cursor: default;
+}
+
 /* CSS for the Questions */
 
 .question {

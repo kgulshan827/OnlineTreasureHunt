@@ -23,8 +23,17 @@
       <div class="panel-heading" style="background-color: transparent;">
         <ul class="nav nav-tabs">
           <li class="active hint-list-item"><a href="#image-hint" data-toggle="tab" class="hint-title"><i class="far fa-image"></i></a></li>
-          <li class="hint-list-item"><a href="#audio-hint" data-toggle="tab" class="hint-title"><i class="fas fa-music"></i></a></li>
-          <li class="hint-list-item"><a href="#video-hint" data-toggle="tab" class="hint-title"><i class="fas fa-video"></i></a></li>
+          {% if level.display_audio %}
+            <li class="hint-list-item"><a href="#audio-hint" data-toggle="tab" class="hint-title"><i class="fas fa-music"></i></a></li>
+          {% else %}
+            <li class="hint-list-item"><a href="#" data-toggle="tab" class="hint-title disabled"><i class="fas fa-music"></i></a></li>
+          {% endif %}
+          
+          {% if level.display_video %}
+            <li class="hint-list-item"><a href="#video-hint" data-toggle="tab" class="hint-title"><i class="fas fa-video"></i></a></li>
+          {% else %}
+            <li class="hint-list-item"><a href="#" data-toggle="tab" class="hint-title disabled"><i class="fas fa-video"></i></a></li>
+          {% endif %}
         </ul>
       </div>
       <div class="panel-body">
