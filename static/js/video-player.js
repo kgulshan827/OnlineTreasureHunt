@@ -8,17 +8,9 @@ videoProgress.setAttribute("value", "0");
 
 // Video Play and Pause
 console.log(video.duration);
-videoPlayPause.addEventListener("click", function () {
-  if (videoPlaying) {
-    videoPlaying  = false;
-    video.pause();
-    videoPlayPause.setAttribute("name", "play");
-  } else {
-    videoPlaying = true;
-    video.play();
-    videoPlayPause.setAttribute("name", "pause");
-  }
-});
+videoPlayPause.addEventListener("click", togglePlayPause);
+
+document.getElementById("video").addEventListener("click", togglePlayPause);
 
  // Video Volume Controls
 
@@ -61,6 +53,18 @@ video.addEventListener("timeupdate", function () {
 
   if (video.ended) {
     videoPlaying = false;
-    videoPlayPause.setAttribute("name", "play");
+    videoPlayPause.setAttribute("name", "reload-circle");
   }
 });
+
+function togglePlayPause() {
+  if (videoPlaying) {
+    videoPlaying = false;
+    video.pause();
+    videoPlayPause.setAttribute("name", "play");
+  } else {
+    videoPlaying = true;
+    video.play();
+    videoPlayPause.setAttribute("name", "pause");
+  }
+}

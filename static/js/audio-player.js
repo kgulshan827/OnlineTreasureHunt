@@ -9,19 +9,9 @@ let playing = false;
 
 // Song Play and Pause
 
-audioPlayPause.addEventListener("click", function () {
-  if (playing) {
-    playing = false;
-    song.pause();
-    backgroundVideo.pause();
-    audioPlayPause.setAttribute("name", "play");
-  } else {
-    playing = true;
-    song.play();
-    backgroundVideo.play();
-    audioPlayPause.setAttribute("name", "pause");
-  }
-});
+audioPlayPause.addEventListener("click", playPause);
+
+document.getElementById("background-video").addEventListener("click", playPause);
 
 // Audio Volume Controls
 
@@ -43,7 +33,6 @@ audioProgress.addEventListener("input", function () {
   console.log(song.currentTime);
 });
 
-
 // Audio Slider
 
 song.addEventListener("timeupdate", function () {
@@ -53,6 +42,20 @@ song.addEventListener("timeupdate", function () {
   if (song.ended) {
     playing = false;
     backgroundVideo.pause();
-    audioPlayPause.setAttribute("name", "play");
+    audioPlayPause.setAttribute("name", "reload-circle");
   }
 });
+
+function playPause() {
+  if (playing) {
+    playing = false;
+    song.pause();
+    backgroundVideo.pause();
+    audioPlayPause.setAttribute("name", "play");
+  } else {
+    playing = true;
+    song.play();
+    backgroundVideo.play();
+    audioPlayPause.setAttribute("name", "pause");
+  }
+}
