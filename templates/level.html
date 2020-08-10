@@ -5,6 +5,17 @@
 
 
 <!-- Tab based hints -->
+<div class="lead" style="padding:10px; font-family: 'Montserrat', sans-serif; color: white;">
+  <h1>Q. {{ level.text }} </h1>
+</div>
+{%ifnotequal level.hint "na"%}
+
+<div class="alert alert-success" role="alert">
+  <strong style="color: black;">Hint:</strong>
+  {{level.hint}}
+</div>
+{%endifnotequal%}
+</br>
 
 <div class="row">
   <div class="col">
@@ -146,17 +157,7 @@
     {% endblock %}
 
     </br>
-    <div class="lead" style="padding:10px; font-family: 'Montserrat', sans-serif;">
-      Q. {{ level.text }}
-    </div>
-    {%ifnotequal level.hint "na"%}
-
-    <div class="alert alert-success" role="alert">
-      <strong style="color: black;">Hint:</strong>
-      {{level.hint}}
-    </div>
-    {%endifnotequal%}
-    </br>
+   
 
     Enter your answer:
     <br>

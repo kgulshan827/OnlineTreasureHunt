@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{%block content%}
+
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous"> -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <link rel="stylesheet" href="video-player.css">
+  <title>Video player</title>
+</head>
+
+<body>
+    <div class="c-video">
+      <video src="video.mp4" class="video"></video>
+      <button id="play-pause" class="hidden"></button>
+      <div class="controls">
+        <div class="slider">
+          <div class="slider-color"></div>
+          <!-- <input id="progress-bar" type="range" min="0" max="100" step="1" value="0"></input> -->
+        </div>
+        <div class="volume-controls">
+          <ion-icon class="volume-icon" id="mute" name="volume-mute"></ion-icon>
+          <input id="vol-control" type="range" min="0" max="100" step="1"></input>
+          <ion-icon class="volume-icon" id="max-volume" name="volume-high"></ion-icon>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
+  <script src="https://kit.fontawesome.com/fba5b46cec.js" crossorigin="anonymous"></script>
+  <script src="video-player.js"></script>
+</body>
+
+</html>
