@@ -9,19 +9,9 @@ let playing = false;
 
 // Song Play and Pause
 
-audioPlayPause.addEventListener("click", function () {
-  if (playing) {
-    playing = false;
-    song.pause();
-    backgroundVideo.pause();
-    audioPlayPause.setAttribute("name", "play");
-  } else {
-    playing = true;
-    song.play();
-    backgroundVideo.play();
-    audioPlayPause.setAttribute("name", "pause");
-  }
-});
+audioPlayPause.addEventListener("click", playPause);
+
+document.getElementById("background-video").addEventListener("click", playPause);
 
 // Audio Volume Controls
 
@@ -35,14 +25,13 @@ audioVolumeControl.addEventListener("input", function () {
 
 // Audio Slider Controls
 
-audioProgress.addEventListener("change", function () {
-  song.currentTime = (this.value / 100) * song.duration;
+audioProgress.addEventListener("input", function () {
+  let newValue = audioProgress.value / audioProgress.max;
+  song.currentTime = newValue * song.duration;
+  console.log(song.duration);
+  console.log(newValue);
+  console.log(song.currentTime);
 });
-
-// audioProgress.addEventListener("input", function () {
-//   song.currentTime = (this.value / 100) * song.duration;
-// });
-
 
 // Audio Slider
 
@@ -53,6 +42,20 @@ song.addEventListener("timeupdate", function () {
   if (song.ended) {
     playing = false;
     backgroundVideo.pause();
-    audioPlayPause.setAttribute("name", "play");
+    audioPlayPause.setAttribute("name", "reload-circle");
   }
 });
+
+function playPause() {
+  if (playing) {
+    playing = false;
+    song.pause();
+    backgroundVideo.pause();
+    audioPlayPause.setAttribute("name", "play");
+  } else {
+    playing = true;
+    song.play();
+    backgroundVideo.play();
+    audioPlayPause.setAttribute("name", "pause");
+  }
+}

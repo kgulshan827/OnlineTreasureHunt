@@ -40,13 +40,14 @@ background:rgba(255,255,255,0.7) */
 .nav-justified {background-color: white}
 .bodypad{
 background: #1B809E; /* fallback for old browsers */
-background-image: url("../img/HQ.jpg")!important;
+background-image: url("../img/wallpaper1.jpg")!important;
 background-attachment: fixed;
 
 -webkit-background-size: cover;
 -moz-background-size: cover;
 -o-background-size: cover;
 background-size: cover;
+background-position: center;
 
   /*background-repeat: no-repeat!important;*/
   /*background-position: right top!important;*/
@@ -222,7 +223,8 @@ td{
   line-height: 25px;
   border-top: 5px solid rgb(243, 102, 51);
   border-bottom: 5px solid rgb(243, 102, 51);
-  padding: 30px 0;
+  /* padding: 30px 0; */
+  padding: 15px 0 5px 0;
 }
 
 .with-nav-tabs {
@@ -272,4 +274,33 @@ li.active > a:after {
   left: 45%;
   border: 15px solid transparent;
   border-top-color: rgb(243, 102, 51);
+}
+
+a.disabled {
+  pointer-events: none;
+  cursor: default;
+}
+
+/* CSS for the Questions */
+
+.question {
+  margin-left: -10px;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  margin-right: -20px;
+  font-family: 'Montserrat', sans-serif;
+  color: white;
+  text-align: left;
+}
+
+.answer-box {
+  padding: 10px 0 10px 0;
+  margin-bottom: 20px;
+}
+
+/* NAVBAR */
+
+.navbar-btn {
+  margin-top: 4px;
+  margin-bottom: 0;
 }

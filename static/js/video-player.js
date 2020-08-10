@@ -5,21 +5,14 @@ var videoProgress = document.getElementById("video-progress");
 
 let videoPlaying = false;
 videoProgress.setAttribute("value", "0");
-// Song Play and Pause
 
-videoPlayPause.addEventListener("click", function () {
-  if (videoPlaying) {
-    videoPlaying = false;
-    video.pause();
-    videoPlayPause.setAttribute("name", "play");
-  } else {
-    videoPlaying = true;
-    video.play();
-    videoPlayPause.setAttribute("name", "pause");
-  }
-});
+// Video Play and Pause
+console.log(video.duration);
+videoPlayPause.addEventListener("click", togglePlayPause);
 
-// Video Volume Controls
+document.getElementById("video").addEventListener("click", togglePlayPause);
+
+ // Video Volume Controls
 
 videoVolumeControl.addEventListener("change", function () {
   video.volume = this.value / 100;
@@ -31,22 +24,47 @@ videoVolumeControl.addEventListener("input", function () {
 
 // Video Slider Controls
 
-videoProgress.addEventListener("change", function () {
-  video.currentTime = (this.value / 100) * video.duration;
+videoProgress.addEventListener("input", function () {  
+  let newValue = videoProgress.value / videoProgress.max;
+  video.currentTime = newValue * video.duration;
+  console.log(video.duration);
+  console.log(newValue);
+  console.log(video.currentTime);
 });
 
-videoProgress.addEventListener("input", function () {
-  video.currentTime = (this.value / 100) * video.duration;
+// $("#video-progress").bind("change", function () {
+//   video.currentTime = (this.value / 100) * video.duration;
+// });
+
+// $("#video-progress").bind("input", function () {
+//   video.currentTime = (this.value / 100) * video.duration;
+// });
+
+videoProgress.addEventListener("change", function () {  
+  var newTime = (this.value / 100) * video.duration;
+  video.currentTime = newTime;
 });
 
-// Video Slider
+// Video Slider 
 
-video.addEventListener("timeupdate", function () {
+video.addEventListener("timeupdate", function () {  
   var sliderPosition = video.currentTime / video.duration;
   videoProgress.value = sliderPosition * 100;
 
   if (video.ended) {
     videoPlaying = false;
-    videoPlayPause.setAttribute("name", "play");
+    videoPlayPause.setAttribute("name", "reload-circle");
   }
 });
+
+function togglePlayPause() {
+  if (videoPlaying) {
+    videoPlaying = false;
+    video.pause();
+    videoPlayPause.setAttribute("name", "play");
+  } else {
+    videoPlaying = true;
+    video.play();
+    videoPlayPause.setAttribute("name", "pause");
+  }
+}

@@ -16,7 +16,8 @@ def index(request):
     countdown = config.countdown
 
     if request.user.is_authenticated:
-        if countdown and (not request.user.is_staff):
+        # if countdown and (not request.user.is_staff):
+        if countdown:
             print(datetime.datetime.now())
             return render(request, 'timer.html',{'time':config.time})
 
